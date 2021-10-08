@@ -62,9 +62,12 @@ module.exports = {
     return fullDate;
   },
 
-  total: function (one, two, three, four, five) {
-    var sum = one + two + three + four + five;
-    var tot = Math.round(sum/5);
-    return tot;
+  total: function(one, two, three, four, five) {
+    var tot = 0;
+    tot = parseInt(one) + parseInt(two) + parseInt(three) + parseInt(four) + parseInt(five);
+
+    var per = tot / 5;
+    return per;
   },
+  
 };

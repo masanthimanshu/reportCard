@@ -99,6 +99,7 @@ app.post("/", function(req,res){
     var eco = req.body.eco;
     var engl = req.body.english;
     var cs = req.body.cs;
+
     var percent = total(accts, bst, eco, engl, cs);
 
     const dataSet = new Collection ({
@@ -112,7 +113,7 @@ app.post("/", function(req,res){
         percentage: percent
     });
     
-    // dataSet.save();
+    dataSet.save();
 
     if(res.statusCode == 200){
         res.render(__dirname + "/views/card", {
