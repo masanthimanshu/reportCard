@@ -1,0 +1,40 @@
+:root {
+    --textColor: #22577A;
+    --backColor: #80ED99;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    font-family: Bitter;
+    color: var(--textColor);
+}
+
+body {
+    background-color: var(--backColor);
+}
+
+div {
+    display: inline-block;
+}
+
+h1 {
+    font-size: 2.5rem;
+    height: 100%;
+}
+
+p {
+    font-size: 2.5rem;
+}
+
+img {
+    width: 50%;
+}
+
+.head-sec {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
