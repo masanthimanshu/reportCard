@@ -6,6 +6,7 @@ const func = require("./public/javascript/jsFunctions.js");
 // Database Code Starts From Here //
 
 const mongoose = require("mongoose");
+const { total } = require("./public/javascript/jsFunctions.js");
 
 const databaseName = "school";
 const collectionName = "marks";
@@ -51,13 +52,20 @@ const databaseSchema = new mongoose.Schema ({
         required: [true, "English Marks Not Specified"]
     },
 
-    infoPrac : {
+    compSci : {
         type: Number,
         min: 0,
         max: 100,
         required: [true, "IP Marks Not Specified"]
     },
-});
+
+    percentage : {
+        type: Number,
+        min: 0,
+        max: 100,
+        required: [true, "Percentage Not Specified"]
+    },
+})
 
 const Collection = mongoose.model(collectionName, databaseSchema);
 
@@ -90,7 +98,8 @@ app.post("/", function(req,res){
     var bst = req.body.bst;
     var eco = req.body.eco;
     var engl = req.body.english;
-    var ip = req.body.ip;
+    var cs = req.body.cs;
+    var percent = total(accts, bst, eco, engl, cs);
 
     const dataSet = new Collection ({
         name: fullName,
@@ -99,17 +108,31 @@ app.post("/", function(req,res){
         bSt: bst,
         economics: eco,
         english: engl,
-        infoPrac: ip
+        compSci: cs,
+        percentage: percent
     });
     
     // dataSet.save();
 
     if(res.statusCode == 200){
         res.render(__dirname + "/views/card", {
-            title: "Report Card"
+            title: "Report Card",
+            studName: fullName,
+            accounts: accts,
+            business: bst,
+            economics: eco,
+            english: engl,
+            compScience: cs,
+            totalPer: percent
         })
     }
 
+})
+
+app.get("/card", function(req,res){
+    res.render(__dirname + "/views/card", {
+        title: "Report Card"
+    })
 })
 
 var port = 3000;

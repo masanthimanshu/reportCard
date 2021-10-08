@@ -61,4 +61,10 @@ module.exports = {
     fullDate = "Date : " + date + " " + month + " " + year;
     return fullDate;
   },
+
+  total: function (one, two, three, four, five) {
+    var sum = one + two + three + four + five;
+    var tot = Math.round(sum/5);
+    return tot;
+  },
 };
