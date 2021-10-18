@@ -6,7 +6,6 @@ const func = require("./public/javascript/jsFunctions.js");
 // Database Code Starts From Here //
 
 const mongoose = require("mongoose");
-const { total } = require("./public/javascript/jsFunctions.js");
 
 const databaseName = "school";
 const collectionName = "marks";
